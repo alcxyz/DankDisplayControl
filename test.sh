@@ -48,6 +48,10 @@ assert_contains "component plugin id" 'property var pluginService' "$COMPONENT"
 assert_contains "settings plugin id" 'pluginId: "dankDisplayControl"' "$SETTINGS"
 assert_contains "Hyprland effective state" '["hyprctl", "-j", "monitors", "all"]' "$COMPONENT"
 assert_contains "software mirror detection" 'Couch mirror ' "$COMPONENT"
+assert_contains "couch width" 'popoutWidth: 520' "$COMPONENT"
+assert_contains "effective state section" 'text: "Now showing"' "$COMPONENT"
+assert_contains "action section" 'text: "Quick actions"' "$COMPONENT"
+assert_contains "policy section" 'text: "Layout policy"' "$COMPONENT"
 
 for layout in adaptive all dual-tvs primary-aux secondary-aux solo-primary solo-secondary solo-tertiary; do
     assert_contains "layout $layout" "{ id: \"$layout\"" "$COMPONENT"
