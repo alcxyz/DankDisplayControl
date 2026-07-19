@@ -1,0 +1,38 @@
+{
+  "id": "dankDisplayControl",
+  "name": "Display Control",
+  "description": "Track effective Hyprland outputs and switch couch display layouts, mirroring, and audio",
+  "version": "0.1.0",
+  "author": "alcxyz",
+  "icon": "display_settings",
+  "type": "widget",
+  "capabilities": ["dankbar-widget"],
+  "component": "./DankDisplayControl.qml",
+  "settings": "./DankDisplayControlSettings.qml",
+  "settings_schema": {
+    "refreshInterval": {
+      "type": "integer",
+      "default": 2,
+      "minimum": 1,
+      "maximum": 30
+    },
+    "televisionWidthThreshold": {
+      "type": "integer",
+      "default": 1000,
+      "minimum": 500,
+      "maximum": 2000
+    },
+    "showAudio": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "requires_dms": ">=1.4.0",
+  "requires": [
+    "hyprctl",
+    "couch-display-layout",
+    "couch-display-mirror",
+    "couch-audio-output"
+  ],
+  "permissions": ["settings_read", "settings_write", "process"]
+}
