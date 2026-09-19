@@ -36,7 +36,9 @@ of truth for policy, connector selection, workspaces, and audio routing.
 
 Copy or symlink this directory to
 `~/.config/DankMaterialShell/plugins/DankDisplayControl`, enable
-`dankDisplayControl`, and add it to a DMS bar configuration.
+`dankDisplayControl`, and add it to a DMS bar configuration. For an
+identifiable development build, stage `dist/dev` first and copy
+`dist/dev/share/dms-plugins/DankDisplayControl/` instead of the raw checkout.
 
 For a Nix installation, use the repository as a `flake = false` input and pass
 it to the DMS plugin module as the plugin source.
@@ -54,6 +56,20 @@ Reload a development checkout with:
 ```bash
 dms ipc call plugins reload dankDisplayControl
 ```
+
++## Development builds
+
+The tracked manifest keeps the release version. To stage an identifiable
+development package, run:
+
+```bash
+python3 scripts/package.py --output dist/dev
+```
+
+This produces a manifest version like `X.Y.Z-dev.<commit>`; a dirty checkout
+adds `.dirty`. For Nix, use `pkgs.callPackage ./default.nix { revision = ...; }`.
+Release packaging is guarded and requires a clean checkout at the exact
+`vX.Y.Z` tag.
 
 ## License
 
